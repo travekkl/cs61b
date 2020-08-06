@@ -39,6 +39,16 @@ public class Planet {
         return (this.G * this.mass * p.mass / r / r); 
 	}
 
+	public double calcForceExertedByX(Planet p) {
+        return (this.calcForceExertedBy(p) * (p.xxPos - this.xxPos)
+                      / this.calcDistance(p)); 
+	}
+
+	public double calcForceExertedByY(Planet p) {
+        return (this.calcForceExertedBy(p) * (p.yyPos - this.yyPos)
+                      / this.calcDistance(p)); 
+	}
+
 	public double calcNetForceExertedByX(Planet[] a) {
 		double forceX = 0;
 		for (Planet planetItem: a) {
