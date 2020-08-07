@@ -28,7 +28,7 @@ public class NBody {
     	Planet[] planetsArray = new Planet[len];
     	int cnt = 0;
         try {
-	    	while((!in.isEmpty()) && (cnt < len)) {
+	    	while(cnt < len) {
 	    		for(int i = 0; i < 5; i++) {
 	    	        double xxPos = in.readDouble();
 	    		    double yyPos = in.readDouble();
@@ -36,7 +36,7 @@ public class NBody {
 	    		    double yyVel = in.readDouble();
 	    		    double mass  = in.readDouble();
 	    		    String imgFileName = in.readString();
-	    		    planetsArray[i] = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
+	    		    planetsArray[cnt] = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
 	    		    cnt++;
 	    		}
 
@@ -57,6 +57,8 @@ public class NBody {
         double radius = readRadius(filename);
     	Planet[] planetsArray = readPlanets(filename);
 
+
+        //System.out.println(planetsArray.length);
         String Screen = "images/starfield.jpg";
 		StdDraw.setScale(-1 * radius, radius);
 		/* Clears the drawing window. */
@@ -66,6 +68,7 @@ public class NBody {
 
 		for (Planet planet: planetsArray) {
 			planet.draw();
+			//System.out.println(planet.xxPos);
 		}
 		StdDraw.show();
         //StdDraw.pause(10000);
