@@ -18,10 +18,14 @@ public class NBody {
      * to the planets in the file.
      */
     public static Planet[] readPlanets(String s) {
-    	Planet[] planetsArray = new Planet[5]; 
+        In inLength = new In(s);
+        String[] sArray = inLength.readAllLines();
+        //System.out.println(sArray.length);
+    	Planet[] planetsArray = new Planet[sArray.length]; 
     	In in = new In(s);
     	in.readInt();
     	in.readDouble();
+    	int len = 0;
 
         try {
 	    	while(!in.isEmpty()) {
@@ -33,6 +37,7 @@ public class NBody {
 	    		    double mass  = in.readDouble();
 	    		    String imgFileName = in.readString();
 	    		    planetsArray[i] = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
+	    		    len++;
 	    		}
 
 	    	}
@@ -40,7 +45,11 @@ public class NBody {
         catch (Exception e) {
         }
 
-    	return planetsArray;
+        Planet[] planetsArrayEnd = new Planet[len];
+        for (int i = 0; i < len; i++) {
+        	planetsArrayEnd[i] = planetsArray[i];
+        }
+    	return planetsArrayEnd;
 
     }
 
