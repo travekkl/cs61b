@@ -22,15 +22,24 @@ public class NBody {
     	In in = new In(s);
     	in.readInt();
     	in.readDouble();
-    	for(int i = 0; i < 5; i++) {
-    		double xxPos = in.readDouble();
-    		double yyPos = in.readDouble();
-    		double xxVel = in.readDouble();
-    		double yyVel = in.readDouble();
-    		double mass  = in.readDouble();
-    		String imgFileName = in.readString();
-    		planetsArray[i] = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
-    	}
+
+        try {
+	    	while(!in.isEmpty()) {
+	    		for(int i = 0; i < 5; i++) {
+	    	        double xxPos = in.readDouble();
+	    		    double yyPos = in.readDouble();
+	    		    double xxVel = in.readDouble();
+	    		    double yyVel = in.readDouble();
+	    		    double mass  = in.readDouble();
+	    		    String imgFileName = in.readString();
+	    		    planetsArray[i] = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
+	    		}
+
+	    	}
+        }
+        catch (Exception e) {
+        }
+
     	return planetsArray;
 
     }
