@@ -17,12 +17,12 @@ public class LinkedListDeque <T> {
     private IntNode sentinel;
     private int size;
     /** Constructor with para item*/
-    public LinkedListDeque(T item) {
+    /*public LinkedListDeque(T item) {
         sentinel = new IntNode(null, null, null);
         sentinel.next = new IntNode(sentinel, item, sentinel);
         sentinel.pre = sentinel.next;
         size = 1;
-    }
+    }*/
     /** Constructor without para*/
     public LinkedListDeque() {
         sentinel = new IntNode(null, null, null);
@@ -39,6 +39,7 @@ public class LinkedListDeque <T> {
         else
         {
             sentinel.next = new IntNode(sentinel, item, sentinel.next);
+            sentinel.next.next.pre = sentinel.next;
 
         }
         size++;
@@ -52,6 +53,7 @@ public class LinkedListDeque <T> {
         else
         {
             sentinel.pre = new IntNode(sentinel.pre, item, sentinel);
+            sentinel.pre.pre.next = sentinel.pre;
         }
         size++;
     }
