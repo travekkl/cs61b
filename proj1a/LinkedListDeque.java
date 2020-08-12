@@ -1,13 +1,12 @@
 /** Linked List Deque*/
-public class LinkedListDeque <T> {
+public class LinkedListDeque < T > {
     /** Create class IntNode as a helper, it is a LinkedList*/
     private class IntNode {
-        public IntNode pre;
-        public T item;
-        public IntNode next;
-
+        private IntNode pre;
+        private T item;
+        private IntNode next;
         /** Constructor*/
-        public IntNode(IntNode p,T i, IntNode n) {
+        public IntNode(IntNode p, T i, IntNode n) {
             pre = p;
             item = i;
             next = n;
@@ -40,7 +39,6 @@ public class LinkedListDeque <T> {
         {
             sentinel.next = new IntNode(sentinel, item, sentinel.next);
             sentinel.next.next.pre = sentinel.next;
-
         }
         size++;
     }
@@ -87,7 +85,6 @@ public class LinkedListDeque <T> {
         if (isEmpty()) {
             return null;
         }
-
         T L = sentinel.next.item;
         sentinel.next = sentinel.next.next;
         sentinel.next.pre = sentinel;
@@ -100,7 +97,6 @@ public class LinkedListDeque <T> {
         if (isEmpty()) {
             return null;
         }
-
         T L = sentinel.pre.item;
         sentinel.pre = sentinel.pre.pre;
         sentinel.pre.next = sentinel;
@@ -109,10 +105,9 @@ public class LinkedListDeque <T> {
     }
     /** Gets the item at the given index*/
     public T get(int index) {
-        if ((!isEmpty()) || (index + 1 > size)) {
+        if ((isEmpty()) || (index + 1 > size)) {
             return null;
         }
-
         IntNode L = sentinel.next;
         int cnt = index;
         while (cnt > 0) {
@@ -131,11 +126,9 @@ public class LinkedListDeque <T> {
     }
     /**another get method use recursive*/
     public T getRecursive(int index) {
-        if ((!isEmpty()) || (index + 1 > size)) {
+        if ((isEmpty()) || (index + 1 > size)) {
             return null;
         }
-
         return getHelper(index, sentinel.next);
     }
-
 }
