@@ -21,6 +21,9 @@ public class ArrayDeque < T > {
         if ((arrayLen >= 16) && (size < arrayLen * refactor + 1))
         {
             arrayLen = Math.round((int) (1 + refactor) * size);
+            if (arrayLen < 16) {
+                arrayLen = 8;
+            }
         } else if (size + 1 > arrayLen) {
             if (arrayLen < 16) {
                 arrayLen = 16;
