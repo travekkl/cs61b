@@ -70,8 +70,14 @@ public class ArrayDequeTest {
         // should be empty
         boolean passed = checkEmpty(true, lld1.isEmpty());
         for (int i = 0; i < 16; i++) {
-            //lld1.addLast(i);
+            lld1.addLast(i);
             //System.out.println(lld1.get(0));
+        }
+        //System.out.println(lld1.size());
+        //lld1.printDeque();
+        for (int i = 0; i < 16; i++) {
+            System.out.println(lld1.removeFirst());
+            lld1.printDeque();
         }
 
         //System.out.println(lld1.get(5));
@@ -91,7 +97,7 @@ public class ArrayDequeTest {
 
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
-        addIsEmptySizeTest();
+        //addIsEmptySizeTest();
         addRemoveTest();
     }
 }

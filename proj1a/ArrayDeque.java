@@ -17,7 +17,8 @@ public class ArrayDeque < T > {
 
     /** Resize the array deque*/
     private void resizeArray() {
-        if ((arrayLen >= 16) && (size < arrayLen * refactor))
+        int preLen = arrayLen;
+        if ((arrayLen >= 16) && (size < arrayLen * refactor + 1))
         {
             arrayLen = Math.round((int) (1 + refactor) * size);
         } else if (size + 1 > arrayLen) {
@@ -26,13 +27,19 @@ public class ArrayDeque < T > {
             } else {
                 arrayLen = Math.round((1 + refactor) * size);
             }
+
         } else {
             return;
         }
 
         T[] tempArray = (T[]) new Object[arrayLen];
         for (int i = 0; i < size; i++) {
-            tempArray[i] = items[(nextFirst + 1 + i) % size];
+            if (preLen <= arrayLen) {
+                tempArray[i] = items[(nextFirst + 1 + i) % size];
+            } else {
+                tempArray[i] = items[(nextFirst + 1 + i) % preLen];
+            }
+
         }
         nextFirst = arrayLen - 1;
         nextLast = size;
@@ -70,7 +77,7 @@ public class ArrayDeque < T > {
     public void printDeque() {
         if (!isEmpty()) {
             int index = (nextFirst + 1) % arrayLen;
-            while (index != nextLast) {
+            for (int i = 0; i < size; i++) {
                 System.out.print(items[index]);
                 System.out.print(' ');
                 index = (index + 1) % arrayLen;
@@ -84,10 +91,9 @@ public class ArrayDeque < T > {
         if (isEmpty()) {
             return null;
         }
-
+        resizeArray();
         nextFirst = (nextFirst + 1) % arrayLen;
         size--;
-        resizeArray();
         return items[nextFirst];
     }
 
@@ -96,10 +102,9 @@ public class ArrayDeque < T > {
         if (isEmpty()) {
             return null;
         }
-
+        resizeArray();
         nextLast = (nextLast + arrayLen - 1) % arrayLen;
         size--;
-        resizeArray();
         return items[nextLast];
     }
 
