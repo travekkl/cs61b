@@ -31,10 +31,13 @@ public class ArrayDeque < T > {
         }
 
         T[] tempArray = (T[]) new Object[arrayLen];
-        System.arraycopy(items, 0, tempArray, 0, Math.min(arrayLen, size));
+        for (int i = 0; i < size; i++) {
+            tempArray[i] = items[(nextFirst + 1 + i) % size];
+        }
+        nextFirst = arrayLen - 1;
+        nextLast = size;
         items = tempArray;
         tempArray = null;
-
     }
 
     /** Adds an item of type T to the front of the deque*/
@@ -42,10 +45,7 @@ public class ArrayDeque < T > {
         resizeArray();
         items[nextFirst] = item;
         size++;
-        nextFirst--;
-        if (nextFirst < 0) {
-            nextFirst = arrayLen - 1;
-        }
+        nextFirst = (nextFirst + arrayLen - 1) % arrayLen;
     }
 
     /** Adds an item of type T to the back of the deque*/
@@ -53,10 +53,7 @@ public class ArrayDeque < T > {
         resizeArray();
         items[nextLast] = item;
         size++;
-        nextLast++;
-        if (nextLast >= arrayLen) {
-            nextLast = 0;
-        }
+        nextLast = (nextLast + 1) % arrayLen;
     }
 
     /** Returns true if deque is empty, false otherwise*/

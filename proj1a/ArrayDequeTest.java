@@ -69,12 +69,13 @@ public class ArrayDequeTest {
         ArrayDeque<Integer> lld1 = new ArrayDeque<>();
         // should be empty
         boolean passed = checkEmpty(true, lld1.isEmpty());
-        for (int i = 0; i < 8; i++) {
-            lld1.addFirst(i);
+        for (int i = 0; i < 16; i++) {
+            //lld1.addLast(i);
+            //System.out.println(lld1.get(0));
         }
 
-        System.out.println(lld1.removeFirst());
-        System.out.println(lld1.removeLast());
+        //System.out.println(lld1.get(5));
+        //System.out.println(lld1.removeLast());
 
         lld1.addFirst(10);
         // should not be empty
