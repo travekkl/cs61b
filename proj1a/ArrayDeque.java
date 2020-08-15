@@ -20,7 +20,7 @@ public class ArrayDeque < T > {
         if ((arrayLen >= 16) && (size < arrayLen * refactor))
         {
             arrayLen = Math.round((int) (1 + refactor) * size);
-        } else if (size + 1 >= arrayLen) {
+        } else if (size + 1 > arrayLen) {
             if (arrayLen < 16) {
                 arrayLen = 16;
             } else {
@@ -75,6 +75,7 @@ public class ArrayDeque < T > {
             int index = (nextFirst + 1) % arrayLen;
             while (index != nextLast) {
                 System.out.print(items[index]);
+                System.out.print(' ');
                 index = (index + 1) % arrayLen;
             }
         }
@@ -99,7 +100,7 @@ public class ArrayDeque < T > {
             return null;
         }
 
-        nextLast = (nextLast - 1) % arrayLen;
+        nextLast = (nextLast + arrayLen - 1) % arrayLen;
         size--;
         resizeArray();
         return items[nextLast];
