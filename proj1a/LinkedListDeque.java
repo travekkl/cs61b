@@ -46,7 +46,7 @@ public class LinkedListDeque<T> {
         size++;
     }
     /** Returns true if deque is empty, false otherwise*/
-    public boolean isEmpty () {
+    public boolean isEmpty() {
         if (size == 0) {
             return true;
         }
