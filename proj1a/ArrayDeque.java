@@ -1,4 +1,4 @@
-public class ArrayDeque < T > {
+public class ArrayDeque<T> {
     private T[] items;
     private int nextFirst;
     private int nextLast;
@@ -18,10 +18,9 @@ public class ArrayDeque < T > {
     /** Resize the array deque*/
     private void resizeArray() {
         int preLen = arrayLen;
-        if ((arrayLen >= 16) && (size < arrayLen * refactor + 1))
-        {
+        if ((arrayLen >= 16) && (size < arrayLen * refactor + 1)) {
             arrayLen = Math.round((int) (1 + refactor) * size);
-            if (arrayLen < 16) {
+            if (arrayLen < 8) {
                 arrayLen = 8;
             }
         } else if (size + 1 > arrayLen) {

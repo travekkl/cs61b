@@ -1,5 +1,5 @@
 /** Linked List Deque*/
-public class LinkedListDeque < T > {
+public class LinkedListDeque<T> {
     /** Create class IntNode as a helper, it is a LinkedList*/
     private class IntNode {
         private IntNode pre;
@@ -15,13 +15,7 @@ public class LinkedListDeque < T > {
 
     private IntNode sentinel;
     private int size;
-    /** Constructor with para item*/
-    /*public LinkedListDeque(T item) {
-        sentinel = new IntNode(null, null, null);
-        sentinel.next = new IntNode(sentinel, item, sentinel);
-        sentinel.pre = sentinel.next;
-        size = 1;
-    }*/
+
     /** Constructor without para*/
     public LinkedListDeque() {
         sentinel = new IntNode(null, null, null);
@@ -34,9 +28,7 @@ public class LinkedListDeque < T > {
         if (isEmpty()) {
             sentinel.next = new IntNode(sentinel, item, sentinel);
             sentinel.pre = sentinel.next;
-        }
-        else
-        {
+        } else {
             sentinel.next = new IntNode(sentinel, item, sentinel.next);
             sentinel.next.next.pre = sentinel.next;
         }
@@ -47,9 +39,7 @@ public class LinkedListDeque < T > {
         if (isEmpty()) {
             sentinel.next = new IntNode(sentinel, item, sentinel);
             sentinel.pre = sentinel.next;
-        }
-        else
-        {
+        } else {
             sentinel.pre = new IntNode(sentinel.pre, item, sentinel);
             sentinel.pre.pre.next = sentinel.pre;
         }
