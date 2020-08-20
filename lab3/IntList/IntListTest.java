@@ -53,7 +53,7 @@ public class IntListTest {
         IntList A = IntList.of(1, 2, 3);
         IntList B = IntList.of(4, 5, 6);
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
-        assertEquals(exp, IntList.dcatenate(A, B));
+        assertEquals(exp, IntList.decadent(A, B));
         assertEquals(IntList.of(1, 2, 3, 4, 5, 6), A);
     }
 
@@ -62,12 +62,25 @@ public class IntListTest {
         IntList A = IntList.of(1, 2, 3);
         IntList B = IntList.of(4, 5, 6);
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
-        assertEquals(exp, IntList.catenate(A, B));
+        assertEquals(exp, IntList.concatenate(A, B));
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
     /** If you're running this from the command line, you'll need
       * to add a main method. See ArithmeticTest.java for an
       * example. */
+    @Test
+    public void testReverse() {
+        IntList A = IntList.of(1, 2, 3, 4);
+        IntList B = IntList.of();
+        assertEquals(IntList.of(4, 3, 2, 1), IntList.reverse(A));
+        assertEquals(IntList.of(4, 3, 2, 1), A);
+        assertEquals(null, IntList.reverse(B));
+
+        A = IntList.of(1, 2, 3, 4);
+        assertEquals(IntList.of(4, 3, 2, 1), IntList.reverseRecursive(A));
+        assertEquals(IntList.of(4, 3, 2, 1), A);
+        assertEquals(null, IntList.reverseRecursive(B));
+    }
 
 }
