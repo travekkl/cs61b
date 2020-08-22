@@ -17,8 +17,7 @@ public class TestArrayDequeGold {
         for (int i = 0; i < 10; i++) {
             Integer expected = stdAnswer.get(i);
             Integer actual = stuAnswer.get(i);
-            assertEquals("Oh noooo!\nThis is bad:\n   Random number " + actual
-                    + " not equal to " + expected + "!", expected, actual);
+            assertEquals("addLast is bad:", expected, actual);
         }
 
         //addFirst
@@ -31,8 +30,7 @@ public class TestArrayDequeGold {
         for (int i = 0; i < 10; i++) {
             Integer expected = stdAnswer.get(i);
             Integer actual = stuAnswer.get(i);
-            assertEquals("Oh noooo!\nThis is bad:\n   Random number " + actual
-                    + " not equal to " + expected + "!", expected, actual);
+            assertEquals("addFirst is bad:", expected, actual);
         }
 
         //removeFirst
@@ -46,8 +44,7 @@ public class TestArrayDequeGold {
         for (int i = 0; i < 10; i++) {
             Integer expected = expectedAnswer.get(i);
             Integer actual = actualAnswer.get(i);
-            assertEquals("Oh noooo!\nThis is bad:\n   Random number " + actual
-                    + " not equal to " + expected + "!", expected, actual);
+            assertEquals("removeFirst is bad:", expected, actual);
         }
 
         //removeLast
@@ -59,8 +56,7 @@ public class TestArrayDequeGold {
         for (int i = 0; i < 10; i++) {
             Integer expected = expectedAnswer.get(i);
             Integer actual = actualAnswer.get(i);
-            assertEquals("Oh noooo!\nThis is bad:\n   Random number " + actual
-                    + " not equal to " + expected + "!", expected, actual);
+            assertEquals("removeLast is bad:", expected, actual);
         }
 
 
