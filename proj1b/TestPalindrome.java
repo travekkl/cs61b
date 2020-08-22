@@ -38,7 +38,7 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("caac", cc));
         assertFalse(palindrome.isPalindrome("horse", cc));
         assertFalse(palindrome.isPalindrome("rancor", cc));
-        assertFalse(palindrome.isPalindrome("Ata", cc));
+        assertFalse(palindrome.isPalindrome("130", cc));
 
         OffByN dd = new OffByN(5);
         assertTrue(palindrome.isPalindrome("", dd));

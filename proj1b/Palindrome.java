@@ -35,9 +35,15 @@ public class Palindrome {
         if (item.size() <= 1) {
             return true;
         }
-        return ((cc.equalChars(item.removeFirst(), item.removeLast())) && (isPalindromeHelp(item, cc)));
+        return ((cc.equalChars(item.removeFirst(), item.removeLast()))
+                && (isPalindromeHelp(item, cc)));
     }
     public boolean isPalindrome(String word, CharacterComparator cc) {
+        for (int i = 0; i < word.length(); i++) {
+            if (!Character.isAlphabetic(word.charAt(i))) {
+                return false;
+            }
+        }
         Deque<Character> d = wordToDeque(word);
         return isPalindromeHelp(d, cc);
     }
