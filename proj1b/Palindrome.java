@@ -39,11 +39,11 @@ public class Palindrome {
                 && (isPalindromeHelp(item, cc)));
     }
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        for (int i = 0; i < word.length(); i++) {
+        /*for (int i = 0; i < word.length(); i++) {
             if (!Character.isAlphabetic(word.charAt(i))) {
                 return false;
             }
-        }
+        }*/
         Deque<Character> d = wordToDeque(word);
         return isPalindromeHelp(d, cc);
     }
