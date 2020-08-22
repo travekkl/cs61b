@@ -12,12 +12,11 @@ public class TestArrayDequeGold {
             int randomNum = StdRandom.uniform(100);
             stdAnswer.addLast(randomNum);
             stuAnswer.addLast(randomNum);
-        }
 
-        for (int i = 0; i < 10; i++) {
             Integer expected = stdAnswer.get(i);
             Integer actual = stuAnswer.get(i);
-            assertEquals("addLast is bad:", expected, actual);
+            assertEquals("addLast(" + randomNum + ")", expected, actual);
+            System.out.printf("addLast(%d)\n", randomNum);
         }
 
         //addFirst
@@ -25,41 +24,27 @@ public class TestArrayDequeGold {
             int randomNum = StdRandom.uniform(100);
             stdAnswer.addFirst(randomNum);
             stuAnswer.addFirst(randomNum);
-        }
-
-        for (int i = 0; i < 10; i++) {
             Integer expected = stdAnswer.get(i);
             Integer actual = stuAnswer.get(i);
-            assertEquals("addFirst is bad:", expected, actual);
+            assertEquals("addFirst(" + randomNum + ")", expected, actual);
+            System.out.printf("addFirst(%d)\n", randomNum);
+
         }
 
         //removeFirst
-        ArrayDequeSolution<Integer> actualAnswer = new ArrayDequeSolution<>();
-        ArrayDequeSolution<Integer> expectedAnswer = new ArrayDequeSolution<>();
         for (int i = 0; i < 10; i++) {
-            expectedAnswer.addLast(stdAnswer.removeFirst());
-            actualAnswer.addLast(stuAnswer.removeFirst());
-        }
-
-        for (int i = 0; i < 10; i++) {
-            Integer expected = expectedAnswer.get(i);
-            Integer actual = actualAnswer.get(i);
-            assertEquals("removeFirst is bad:", expected, actual);
+            Integer expected = stdAnswer.removeFirst();
+            Integer actual = stuAnswer.removeFirst();
+            assertEquals("removeFirst()", expected, actual);
+            System.out.printf("removeFirst()\n");
         }
 
         //removeLast
         for (int i = 0; i < 10; i++) {
-            expectedAnswer.addFirst(stdAnswer.removeLast());
-            actualAnswer.addFirst(stuAnswer.removeLast());
+            Integer expected = stdAnswer.removeLast();
+            Integer actual = stuAnswer.removeLast();
+            assertEquals("removeLast()", expected, actual);
+            System.out.printf("removeLast()\n");
         }
-
-        for (int i = 0; i < 10; i++) {
-            Integer expected = expectedAnswer.get(i);
-            Integer actual = actualAnswer.get(i);
-            assertEquals("removeLast is bad:", expected, actual);
-        }
-
-
-
     }
 }
