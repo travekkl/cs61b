@@ -12,7 +12,7 @@ import java.util.Random;
  * Draws a world consisting of hexagonal regions.
  */
 public class HexWorld {
-    private static final long SEED = 2873123;
+    private static final long SEED = 2873122;
     private static final Random RANDOM = new Random(SEED);
     private static class Position {
         private int x;
@@ -39,9 +39,9 @@ public class HexWorld {
         //return null;
         int a;
         if (line > s) {
-            a = p.x + s * 2 + 1 - (line - s - 1);
+            a = p.x + s * 3 - 2 - (line - s - 1);
         } else {
-            a = p.x + s * 2 - (s - line - 1);
+            a = p.x + s * 3 - 2 - (s - line);
         }
         return a;
     }
@@ -107,13 +107,13 @@ public class HexWorld {
     }
 
     public static void main(String[] args) {
-        Position p = new Position(20, 10);
+        Position p = new Position(20, 5);
         TERenderer ter = new TERenderer();
         ter.initialize(50, 50);
 
         TETile[][] randomTiles = new TETile[50][50];
         initialTiles(randomTiles);
-        //fillWithTiles(randomTiles, p, 3);
+        //fillWithTiles(randomTiles, p, 4);
         drawHexWorld(randomTiles, p, 0, 3);
         //drawHexes(randomTiles, p, 4, 3);
 
