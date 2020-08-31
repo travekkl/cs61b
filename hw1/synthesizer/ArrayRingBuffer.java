@@ -70,7 +70,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
             return ptr < capacity;
         }
         public T next() {
-            T returnItem = rb[ptr + first];
+            T returnItem = rb[(ptr + first) % capacity];
             ptr += 1;
             return returnItem;
         }
