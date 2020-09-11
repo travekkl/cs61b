@@ -55,12 +55,12 @@ public class PercolationStats {
     }
 
     // use for unit testing
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         PercolationFactory pf = new PercolationFactory();
         PercolationStats   p = new PercolationStats(200, 500, pf);
         System.out.println(p.mean());
         System.out.println(p.stddev());
         System.out.println(p.confidenceLow());
         System.out.println(p.confidenceHigh());
-    }
+    }*/
 }

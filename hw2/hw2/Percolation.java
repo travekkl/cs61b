@@ -53,7 +53,7 @@ public class Percolation {
 
 
 
-        if ((row == len - 1) && isFull(row, col)) {//
+        if ((row == len - 1) && isFull(row, col)) {
             sets.union(twoDto1D(row, col), len * len + 1);
         }
 
@@ -94,11 +94,11 @@ public class Percolation {
     }*/
 
     // use for unit testing
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Percolation per = new Percolation(20);
         per.open(1, 2);
         per.open(5, 6);
         per.open(8, 9);
         assertEquals(per.isOpen(1, 2), true);
-    }*/
+    }
 }
