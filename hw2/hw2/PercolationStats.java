@@ -1,7 +1,6 @@
 package hw2;
 import edu.princeton.cs.algs4.StdRandom;
 
-import static org.junit.Assert.assertEquals;
 
 public class PercolationStats {
     private double sumT;
@@ -24,7 +23,7 @@ public class PercolationStats {
                 //System.out.println(StdRandom.uniform(0, N));
                 per.open(StdRandom.uniform(0, N), StdRandom.uniform(0, N));
             }
-            thresholdValue = per.calculateThreshold();
+            thresholdValue = (double) per.numberOfOpenSites() / ((double) N * N);
             //System.out.println(thresholdValue);
             sumT += thresholdValue;
             squareT += thresholdValue * thresholdValue;
@@ -56,7 +55,7 @@ public class PercolationStats {
     }
 
     // use for unit testing
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         PercolationFactory pf = new PercolationFactory();
         PercolationStats   p = new PercolationStats(200, 500, pf);
         System.out.println(p.mean());

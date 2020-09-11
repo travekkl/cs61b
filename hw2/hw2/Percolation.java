@@ -1,8 +1,6 @@
 package hw2;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-import org.junit.Assert;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class Percolation {
@@ -55,10 +53,18 @@ public class Percolation {
 
 
 
-        if ((row == len - 1) && isFull(row, col)) {
+        if ((row == len - 1) && isFull(row, col)) {//
             sets.union(twoDto1D(row, col), len * len + 1);
-        } else if (row == 0) {
+        }
+
+        if (row == 0) {
             sets.union(twoDto1D(row, col), len * len);
+        }
+
+        for (int i = 0; i < len; i++) {
+            if (isFull(len - 1, i)) {
+                sets.union(twoDto1D(len - 1, i), len * len + 1);
+            }
         }
     }
 
@@ -83,16 +89,16 @@ public class Percolation {
     }
 
     // calculate the threshold value
-    public double calculateThreshold() {
-        return (double)numberOpen / ((double)len * len);
-    }
+    /*private double calculateThreshold() {
+        return (double) numberOpen / ((double) len * len);
+    }*/
 
     // use for unit testing
-    public static void main (String[] args) {
+    /*public static void main(String[] args) {
         Percolation per = new Percolation(20);
         per.open(1, 2);
         per.open(5, 6);
         per.open(8, 9);
-        assertEquals(per.isOpen(1,2), true);
-    }
+        assertEquals(per.isOpen(1, 2), true);
+    }*/
 }
