@@ -63,7 +63,9 @@ public class Percolation {
             items[itemsLen][0] = row;
             items[itemsLen][1] = col;
             itemsLen++;
-        } else if (row == 0) {
+        }
+
+        if (row == 0) {
             sets.union(twoDto1D(row, col), len * len);
         }
 
