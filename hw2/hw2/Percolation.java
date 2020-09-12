@@ -64,6 +64,7 @@ public class Percolation {
         for (int i = 0; i < len; i++) {
             if (isFull(len - 1, i)) {
                 sets.union(twoDto1D(len - 1, i), len * len + 1);
+                break;
             }
         }
     }
