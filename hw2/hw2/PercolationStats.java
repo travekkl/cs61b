@@ -11,6 +11,9 @@ public class PercolationStats {
 
     // perform T independent experiments on an N-by-N grid
     public PercolationStats(int N, int T, PercolationFactory pf) {
+        if (T <= 0) {
+            throw new IllegalArgumentException("The T must be positive!");
+        }
         number = T;
         sumT = 0;
         squareT = 0;
