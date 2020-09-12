@@ -70,9 +70,8 @@ public class Percolation {
         }
 
         for (int i = 0; i < itemsLen; i++) {
-            if (isFull(len - 1, i)) {
-                sets.union(twoDto1D(len - 1, i), len * len + 1);
-                break;
+            if (isFull(items[i][0], items[i][1])) {
+                sets.union(twoDto1D(items[i][0], items[i][1]), len * len + 1);
             }
         }
     }
