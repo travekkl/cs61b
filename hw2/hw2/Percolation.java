@@ -12,6 +12,10 @@ public class Percolation {
     private int numberOpen;
     // create N-by-N grid, with all sites initially blocked
     public Percolation(int N) {
+        if (N < 0) {
+            throw new IllegalArgumentException("The N must be positive!");
+        }
+
         len = N;
         itemsLen = 0;
         numberOpen = 0;
