@@ -5,9 +5,10 @@ import static org.junit.Assert.*;
 
 public class Percolation {
     private WeightedQuickUnionUF sets;
+    private WeightedQuickUnionUF setsOnly;
     private boolean[] setsState;
-    private int[][] items;
-    private int itemsLen;
+    //private int[][] items;
+    //private int itemsLen;
     private int len;
     private int numberOpen;
     // create N-by-N grid, with all sites initially blocked
@@ -17,19 +18,20 @@ public class Percolation {
         }
 
         len = N;
-        itemsLen = 0;
+        //itemsLen = 0;
         numberOpen = 0;
         sets = new WeightedQuickUnionUF(N * N + 2);
+        setsOnly = new WeightedQuickUnionUF(N * N + 2);
         setsState = new boolean[N * N];
-        items = new int[len][2];
+        //items = new int[len][2];
         for (int i = 0; i < N * N; i++) {
             setsState[i] = false;
         }
 
-        for (int i = 0; i < len; i++) {
+        /*for (int i = 0; i < len; i++) {
             items[i][0] = -1;
             items[i][1] = -1;
-        }
+        }*/
     }
 
     private int twoDto1D(int x, int y) {
@@ -45,36 +47,45 @@ public class Percolation {
         numberOpen++;
         if ((row + 1 < len) && isOpen(row + 1, col)) {
             sets.union(twoDto1D(row, col), twoDto1D(row + 1, col));
+            setsOnly.union(twoDto1D(row, col), twoDto1D(row + 1, col));
         }
 
         if ((row - 1 >= 0) && isOpen(row - 1, col)) {
             sets.union(twoDto1D(row, col), twoDto1D(row - 1, col));
+            setsOnly.union(twoDto1D(row, col), twoDto1D(row - 1, col));
         }
 
         if ((col + 1 < len) && isOpen(row, col + 1)) {
             sets.union(twoDto1D(row, col), twoDto1D(row, col + 1));
+            setsOnly.union(twoDto1D(row, col), twoDto1D(row, col + 1));
         }
 
         if ((col - 1 >= 0) && isOpen(row, col - 1)) {
             sets.union(twoDto1D(row, col), twoDto1D(row, col - 1));
+            setsOnly.union(twoDto1D(row, col), twoDto1D(row, col - 1));
         }
 
-        if (row == len - 1) {
+        /*if (row == len - 1) {
             items[itemsLen][0] = row;
             items[itemsLen][1] = col;
             itemsLen++;
-        }
+        }*/
 
         if (row == 0) {
             sets.union(twoDto1D(row, col), len * len);
+            setsOnly.union(twoDto1D(row, col), len * len);
         }
 
-        for (int i = 0; i < itemsLen; i++) {
+        if (row == len - 1) {
+            sets.union(twoDto1D(row, col), len * len + 1);
+        }
+
+        /*for (int i = 0; i < itemsLen; i++) {
             if ((isFull(items[i][0], items[i][1]))
                     && (!sets.connected(twoDto1D(items[i][0], items[i][1]), len * len + 1))) {
                 sets.union(twoDto1D(items[i][0], items[i][1]), len * len + 1);
             }
-        }
+        }*/
     }
 
     // is the site (row, col) open?
@@ -84,7 +95,7 @@ public class Percolation {
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        return sets.connected(twoDto1D(row, col), len * len);
+        return setsOnly.connected(twoDto1D(row, col), len * len);
     }
 
     // number of open sites
