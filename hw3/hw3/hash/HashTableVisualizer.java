@@ -28,6 +28,8 @@ public class HashTableVisualizer {
         visualize(oomies, M, scale);
     }
 
+    //
+
     public static void visualize(List<Oomage> oomages, int M, double scale) {
         HashTableDrawingUtility.drawLabels(M);
         int[] numInBucket = new int[M];
